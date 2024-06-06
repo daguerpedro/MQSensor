@@ -1,4 +1,7 @@
-#include <MQ135.h>
+#include <Arduino.h>
+#line 1 "D:\\code\\MQSensor\\Arduino\\test\\test.ino"
+#include "..\MQ.h"
+
 #define ANALOG_PORT A2
 
 #define RATIO_CLEAN_AIR 3.6 //EXTRACTED FROM DATASHEET
@@ -120,3 +123,4 @@ void loop()
   
   delay(300);
 }
+

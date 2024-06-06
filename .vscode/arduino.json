@@ -1,0 +1,6 @@
+{
+    "sketch": "Arduino\\test\\test.ino",
+    "board": "arduino:avr:uno",
+    "programmer": "arduinoasisp",
+    "output": ".\\Arduino\\out\\"
+}
