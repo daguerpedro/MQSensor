@@ -24,7 +24,8 @@ MQ mqX(uint8_t analogPort, uint loadResistor, uint ratioInCleanAir);
 ```
 O parametro `ratioInCleanAir` é o valor RS/R0 do sensor quando em ar puro, disponível dos datasheets de cada sensor. Você pode optar por usar um valor calibrado para o seu sensor, para isso utilize a função: `calculateR0()` e depois salve esse valor em `setR0()`.  
 
-A função `calculateR0()` irá calcular o RS atual e dividir pelo `ratioInCleanAir`. Note que R0 é a resistência do sensor de X PPM do gás y em ar limpo. Disponível no datasheet.  
+A função `calculateR0()` irá calcular o RS atual.
+Para isso, deixe o sensor por um tempo exposto ao ar limpo. Note que R0 é a resistência do sensor de x PPM do gás y em ar limpo. Verifique no datasheet.  
 
 Para ler a resistência do sensor `readRS()`.  
   
