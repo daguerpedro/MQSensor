@@ -70,7 +70,7 @@ public:
 
         avg = avg / samples;
 
-        return avg/this->m_ratioInCleanAir;
+        return avg;
     }
 
     ///@brief Le a resistencia do sensor, 
