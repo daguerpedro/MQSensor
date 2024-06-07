@@ -39,9 +39,7 @@ public:
     MQ(uint8_t analogPort, uint loadResistor, uint ratioInCleanAir) :
         m_AnalogPort(analogPort),
         m_LoadResistor(loadResistor), 
-        m_ratioInCleanAir(ratioInCleanAir){
-            this->m_R0 = ratioInCleanAir;
-    }
+        m_ratioInCleanAir(ratioInCleanAir){    }
 
     /// @brief Atualiza o valor de R0
     /// @param R0 em KOhm
@@ -81,7 +79,7 @@ public:
     float readRS()
     {
         float RL = this->m_LoadResistor;
-        float VC = ANALOGRESOLUTION;
+        float VC = 5;
 
         float rs = ((VC*RL)/readVoltage())-RL;
         return rs;
