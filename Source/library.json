@@ -1,0 +1,21 @@
+{
+  "name": "MQ Sensor",
+  "keywords": "mq, mq8, mq135, mq sensor, sensor",
+  "description": "Arduino Library for MQ sensor",
+  "repository":
+  {
+    "type": "git",
+    "url": "https://github.com/daguerpedro/mqsensor.git"
+  },
+  "authors": 
+  [
+    {
+      "name": "Dagyer",
+      "maintainer": true
+    }
+  ],
+  "dependencies": [],
+  "version": "1.2.0",
+  "frameworks": "arduino",
+  "platforms": "*"
+}

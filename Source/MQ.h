@@ -1,7 +1,7 @@
 #ifndef _MQ
 #define _MQ
 
-#include <arduino.h>
+#include <Arduino.h>
 
 #define uint unsigned int 
 
@@ -53,8 +53,8 @@ public:
     /// @param humidity 
     void updateTemperatureHumidity(float temperature, float humidity)
     {
-        float temperature = temperature;
-        float humidity = humidity;
+        this->temperature = temperature;
+        this->humidity = humidity;
     }
 
     /// @brief Calcula o R0, ao invés de usar o do datasheet.
@@ -89,7 +89,7 @@ public:
     /// @return Retorna a divisão RS/R0
     float getRS_R0()
     {
-        return readRS()/this->m_R0;
+        return (readRS()/this->m_R0);
     }
 
     /// @brief Converte getRS_R0() em PPM por uma regressão expdecay.
