@@ -1,6 +1,6 @@
-#include <MQ.h>
+#include <MQSensor.h>
 
-MQ mq135(A2, 4.7);
+MQSensor mq135(A2, 4.7);
 
 void setup()
 {

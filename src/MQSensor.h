@@ -1,8 +1,8 @@
-#ifndef _MQ
-#define _MQ
+#ifndef _MQSensor
+#define _MQSensor
 
 #include <Arduino.h>
-class MQ
+class MQSensor
 {
 private:
     unsigned int m_LoadResistor; 
@@ -14,7 +14,7 @@ private:
     float m_Bits;
 
 public:
-    MQ(uint8_t analogPort, unsigned int loadResistor, float resolution = 5, float bits = 10) :  m_AnalogPort(analogPort),  m_LoadResistor(loadResistor), m_Resulution(resolution), m_Bits(bits) {    };
+    MQSensor(uint8_t analogPort, unsigned int loadResistor, float resolution = 5, float bits = 10) :  m_AnalogPort(analogPort),  m_LoadResistor(loadResistor), m_Resulution(resolution), m_Bits(bits) {    };
 
     float readVoltage()
     {
