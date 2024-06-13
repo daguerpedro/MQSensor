@@ -22,6 +22,6 @@ void loop()
   Serial.print(" V: ");  Serial.println(mq135.readVoltage());
   Serial.print(" RS: ");  Serial.println(mq135.readRS());
   Serial.print(" RS/R0: ");  Serial.println(mq135.readRSR0());  
-  Serial.print(" PPM: ");  Serial.println(mq135.readPPM(1.75597943848423, -0.476716991535901));  
+  Serial.print(" PPM: ");  Serial.println(mq135.readPPM(3.90719312430419, -1.99513126467406));  
   Serial.println("-----------------------------------------");
 }
