@@ -14,7 +14,7 @@ O exemplo seguinte é para um sensor Mq135:
 - É necessário passar os parâmetros 'resolution'(Em Volt) e 'bits'(Inteiro Positivo) de acordo com o conversor analógico utilizado. O conversor pode ser o do próprio Arduino, ou um externo como o ADS115. Para verificar o 'resolution' e os 'bits' do seu Arduino, acesse https://www.arduino.cc/reference/en/language/functions/analog-io/analogread/. 
 - **Se você estiver utilizando um Arduino Uno, não é necessário passar os parâmetros 'resolution' e 'bits', o código assumirá 5 e 10.**
 ```c++
-MQ mq135(AX, RL, resolução, bits);
+MQSensor mq135(AX, RL, resolução, bits);
 ```
 **É importante usar a função 'setup' antes de tentar ler 'ppm'**, pois os sensores baseiam o valor de **ppm** em um **valor inicial 'R0'**, R0 é a resistência inicial do sensor.  
 A função 'setup' irá calcular R0 usando 'X' amostras, salvará o valor R0 na instância e retornará o valor de R0 se você quiser lê-lo.
