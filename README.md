@@ -17,7 +17,7 @@ The following example is for an Mq135 sensor:
 MQ mq135(AX, RL, resolution, bits);
 ```
 **It is important to use the 'setup' function before trying to read 'ppm'**, the sensors base the **ppm** value on an **initial value 'R0'**, R0 is the initial sensor resistance.  
-**The setup function will calculate using 'X' samples, save the R0 value in the instance and return the R0 value if you want to read it.**
+The setup function will calculate R0 using 'X' samples, save the R0 value in the instance and return the R0 value if you want to read it.
 ```c++
 float R0 = mq135.setup(int samples);
 ```
