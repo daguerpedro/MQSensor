@@ -5,8 +5,8 @@
 class MQSensor
 {
 private:
-    unsigned int m_LoadResistor; 
-    unsigned int m_R0;
+    float m_LoadResistor; 
+    float m_R0;
 
     uint8_t m_AnalogPort;
     
@@ -14,14 +14,14 @@ private:
     float m_Bits;
 
 public:
-    MQSensor(uint8_t analogPort, unsigned int loadResistor, float resolution = 5, float bits = 10) :  m_AnalogPort(analogPort),  m_LoadResistor(loadResistor), m_Resulution(resolution), m_Bits(bits) {    };
+    MQSensor(uint8_t analogPort, float int loadResistor, float resolution = 5, float bits = 10) :  m_AnalogPort(analogPort),  m_LoadResistor(loadResistor), m_Resulution(resolution), m_Bits(bits) {    };
 
     float readVoltage()
     {
         return this->m_Resulution * analogRead(this->m_AnalogPort) / (pow(2, this->m_Bits)-1);
     };
 
-    float setup(int samples = 1)
+    float calculateR0(int samples = 1)
     {
         float avg = 0;
         
@@ -34,6 +34,11 @@ public:
         return this->m_R0;
     }
 
+    float setR0(float R0)
+    {
+        this->m_R0 = R0;
+    }
+
     float readRS()
     {
         float RL = this->m_LoadResistor;
@@ -41,6 +46,11 @@ public:
 
         float rs = ((VC*RL)/readVoltage())-RL;
         return rs;
+    }
+
+    float readSavedR0()
+    {
+        return this->m_R0;
     }
 
     float readRSR0()

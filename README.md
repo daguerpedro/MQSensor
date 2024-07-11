@@ -2,11 +2,16 @@
 A library to simplify the use of any MQ sensor.  
 Tested with MQ8 and MQ135 sensors.  
 
-# How to use  
+# How to install 
+## Using Arduino IDE  
+Open Arduino IDE, `Sketch > Include Library > Manage Libraries` and search for "`mqsensor`" by Daguer.  
+
+## Manual Download  
 Download the library in [release section](https://github.com/daguerpedro/MQSensor/releases).  
 Open Arduino IDE, `Sketch > Include Library > Add .ZIP Library` and select the .zip.  
 See the examples in Arduino IDE, `File > Examples > MQ Sensor`.  
 
+# How to use  
 **For each physical MQ-X sensor**, you must **create a new instance** of the 'MQ' class in the code and attach an analog port connected to the sensor.  
 The following example is for an Mq135 sensor:  
 - `AX` is the analog port.
@@ -16,16 +21,18 @@ The following example is for an Mq135 sensor:
 ```c++
 MQSensor mq135(AX, RL, resolution, bits);
 ```
-**It is important to use the 'setup' function before trying to read 'ppm'**, the sensors base the **ppm** value on an **initial value 'R0'**, R0 is the initial sensor resistance.  
-The setup function will calculate R0 using 'X' samples, save the R0 value in the instance and return the R0 value if you want to read it.
+**It is important to use the 'calculateR0' function before trying to read 'ppm'**, the sensors base the **ppm** value on an **initial value 'R0'**, R0 is the initial sensor resistance.  
+The calculateR0 function will calculate R0 using 'X' samples, save the R0 value in the instance and return the R0 value if you want to read it.
 ```c++
-float R0 = mq135.setup(int samples);
+float R0 = mq135.calculateR0(int samples);
 ```
+
 To read RS, Voltage or RS/R0 use:  
 ```c++
 float v = mq135.readVoltage();
 float rs = mq135.readRS();
 float rsr0 = mq135.readRSR0();
+float r0 = mq135.readSavedR0(); //This will return the same R0 value that is used to divide RS/R0
 ```
 **To read a ppm you need to plot ppm(y) as a function of rs/r0(x) and create an exponential regression. Where y = a*x^b.**  
 If you don't know how to do this, read the next chapter and see this [directory](./dados).

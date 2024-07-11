@@ -2,11 +2,16 @@
 Uma biblioteca para simplificar o uso de qualquer sensor MQ.  
 Testada com os sensores MQ8 e MQ135.  
 
-# Como usar  
+# Como baixar
+## Usando Arduino IDE  
+Abra o Arduino IDE, `Sketch > Incluir Biblioteca > Gerenciar Bibliotecas` e pesquise por "`mqsensor`" feita por Daguer.  
+
+## Download Manual
 Faça o download da biblioteca na aba [release](https://github.com/daguerpedro/MQSensor/releases).  
 Abra o Arduino IDE, `Sketch > Incluir Biblioteca > Adicionar Biblioteca .ZIP` e selecione o .zip.  
 Veja os exemplos em Arduino IDE, `Arquivo > Exemplos > Sensor MQ`.  
 
+# Como usar  
 **Para cada sensor físico MQ-X**, é necessário **criar uma nova instância** da classe 'MQ' no código e anexar uma porta analógica ligada ao sensor.  
 O exemplo seguinte é para um sensor Mq135:  
 - `AX` é a porta analógica.
@@ -16,16 +21,17 @@ O exemplo seguinte é para um sensor Mq135:
 ```c++
 MQSensor mq135(AX, RL, resolução, bits);
 ```
-**É importante usar a função 'setup' antes de tentar ler 'ppm'**, pois os sensores baseiam o valor de **ppm** em um **valor inicial 'R0'**, R0 é a resistência inicial do sensor.  
-A função 'setup' irá calcular R0 usando 'X' amostras, salvará o valor R0 na instância e retornará o valor de R0 se você quiser lê-lo.
+**É importante usar a função 'calculateR0' antes de tentar ler 'ppm'**, pois os sensores baseiam o valor de **ppm** em um **valor inicial 'R0'**, R0 é a resistência inicial do sensor.  
+A função 'calculateR0' irá calcular R0 usando 'X' amostras, salvará o valor R0 na instância e retornará o valor de R0 se você quiser lê-lo.
 ```c++
-float R0 = mq135.setup(int samples);
+float R0 = mq135.calculateR0(int samples);
 ```
 Para ler RS, Tensão ou RS/R0, use:  
 ```c++
 float v = mq135.readVoltage();
 float rs = mq135.readRS();
 float rsr0 = mq135.readRSR0();
+float r0 = mq135.readSavedR0(); //Retorna o mesmo valor de R0 que é usado para dividir RS/R0.
 ```
 **Para ler um ppm, você precisa plotar ppm(y) como uma função de rs/r0(x) e criar uma regressão exponencial. Onde y = a*x^b.**  
 Se você não souber como fazer isso, leia o próximo capítulo e consulte este [diretório](./dados).
