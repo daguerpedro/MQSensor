@@ -8,7 +8,7 @@ void setup()
   Serial.println("-----------------------------------------");
   Serial.println("Calculating R0... leave the sensor in clean air!");
  
-  float r0 = mq135.setup(100); //Calculate 100 times.
+  float r0 = mq135.calculateR0(100); //Calculate 100 times.
 
   Serial.print("R0: ");  
   Serial.println(r0);

@@ -14,7 +14,7 @@ private:
     float m_Bits;
 
 public:
-    MQSensor(uint8_t analogPort, float int loadResistor, float resolution = 5, float bits = 10) :  m_AnalogPort(analogPort),  m_LoadResistor(loadResistor), m_Resulution(resolution), m_Bits(bits) {    };
+    MQSensor(uint8_t analogPort, float loadResistor, float resolution = 5, float bits = 10) :  m_AnalogPort(analogPort),  m_LoadResistor(loadResistor), m_Resulution(resolution), m_Bits(bits) {    };
 
     float readVoltage()
     {
