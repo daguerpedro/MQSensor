@@ -15,8 +15,8 @@ Veja os exemplos em Arduino IDE, `Arquivo > Exemplos > Sensor MQ`.
 **Para cada sensor físico MQ-X**, é necessário **criar uma nova instância** da classe 'MQ' no código e anexar uma porta analógica ligada ao sensor.  
 O exemplo seguinte é para um sensor Mq135:  
 - `AX` é a porta analógica.
-- `RL` É o valor da resistência de carga em kOhm ligada ao sensor MQ.  
-- É necessário passar os parâmetros 'resolution'(Em Volt) e 'bits'(Inteiro Positivo) de acordo com o conversor analógico utilizado. O conversor pode ser o do próprio Arduino, ou um externo como o ADS115. Para verificar o 'resolution' e os 'bits' do seu Arduino, acesse https://www.arduino.cc/reference/en/language/functions/analog-io/analogread/. 
+- `RL` É o valor da resistência de carga em kOhm ligada ao sensor MQ (Não ao trimpot da placa).  
+- É necessário passar os parâmetros 'resolution'(Em Volt) e 'bits'(Inteiro Positivo) de acordo com o conversor analógico digital utilizado. O conversor pode ser o do próprio Arduino, ou um externo como o ADS115. Para verificar o 'resolution' e os 'bits' do seu Arduino, acesse https://www.arduino.cc/reference/en/language/functions/analog-io/analogread/. 
 - **Se você estiver utilizando um Arduino Uno, não é necessário passar os parâmetros 'resolution' e 'bits', o código assumirá 5 e 10.**
 ```c++
 MQSensor mq135(AX, RL, resolução, bits);
@@ -38,10 +38,6 @@ Se você não souber como fazer isso, leia o próximo capítulo e consulte este 
 ```c++
 float ppm = mq135.readPPM(a, b);
 ```
-
-# Metodologia 
-O site [WebPlotDigitizer](https://automeris.io/wpd/) foi usado para extrair dados das curvas de calibração dos sensores (disponíveis nos datasheets dos fabricantes).   
-Os dados extraídos foram plotados e as regressões exponenciais foram realizadas usando o software [SciDavis](https://scidavis.sourceforge.net/).
 
 ### MQ8 
 ![mq8](./dados/mq8.png)
